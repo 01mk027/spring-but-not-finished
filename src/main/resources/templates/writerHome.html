@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<span th:text="${writ.id}"></span>
+<button onclick="myFunction()">Kitap Ekle</button>
+<form th:action="@{/addBook}" th:object="${book}" method="post" id="myDIV">
+<label>Kitap ID :</label><input th:field="${book.id}"/>
+<label>Kitap Adı :</label><input th:field="${book.bookName}"/>
+<label>Sayfa Sayısı :</label><input th:field="${book.bookName}"/>
+<label>Yazar ID :</label><input th:field="${writ.id}" readonly/>
+<button type="submit">Gönder</button>
+</form>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+window.onload = function() {
+	  document.getElementById('myDIV').style.display = 'none';
+	};
+</script>
+
+</body>
+</html>

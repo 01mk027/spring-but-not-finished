@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th> Yazar ID </th>
+            <th> Yazar İsmi </th>
+            <th> Şifre</th>
+            <th> Yazar Sil</th>
+            <th>Yazar Güncelle</th>
+            <th> Detaylar</th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${writers.empty}">
+            <td colspan="2"> Yazar bulunamadı. </td>
+        </tr>
+        <tr th:each="writer : ${writers}">
+            <td><span th:text="${writer.id}"> ID </span></td>
+            <td><span th:text="${writer.fullName}"> Yazar İsmi </span></td>
+            <td><span th:text="${writer.password}"> Şifre </span></td>
+            <td><a th:href="@{'/deleteWriter/' + ${writer.id}}"><span>Yazarı Sil</span></a></td>
+            <td><a th:href="@{'/updateWriter/' + ${writer.id}}"><span>Yazarı Güncelle</span></a></td>
+            <td><a th:href="@{'/allWriters/' + ${writer.id}}"><span>Detaylar</span></a></td>
+        </tr>
+        
+    </tbody>
+</table>
+
+
+</body>
+</html>
